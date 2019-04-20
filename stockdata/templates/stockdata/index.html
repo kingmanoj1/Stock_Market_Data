@@ -1,0 +1,64 @@
+{% extends 'stockdata/basic.html' %}
+
+{% block title%} Apple data {% endblock title%}
+{%block content%}
+<body>
+<script>
+    function fun(){
+        alert("under construction!!")
+    }
+</script>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-8">
+            <br/>
+
+
+            <b><label>Search Via Date</label></b>
+
+                <input class="form-control mr-sm-2" name="start" id="s1" type="search" placeholder="Search" aria-label="Search">
+                To : <input class="form-control mr-sm-2" type="search" name="end" id="e1"  placeholder="Search" aria-label="Search">
+                <button onclick="fun()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+
+<br/>
+        <table class="table table-bordered table-primary">
+          <thead>
+            <tr>
+
+              <th scope="col">Date</th>
+              <th scope="col">Open</th>
+              <th scope="col">High</th>
+
+              <th scope="col">Low</th>
+              <th scope="col">Close*</th>
+              <th scope="col">Adj Close**</th>
+                <th scope="col">Volume</th>
+            </tr>
+          </thead>
+          <tbody>
+
+           {%for i in alldata|slice:"0:350" %}
+           <td> {{i}} </td>
+               {% if forloop.counter|divisibleby:7 %}
+                    <tr></tr>
+                {% endif %}
+           {% endfor %}
+          </tbody>
+        </table>
+
+
+
+        </div>
+        <div class="col-sm-4">
+
+
+        </div>
+    </div>
+</div>
+{% endblock content%}
+
